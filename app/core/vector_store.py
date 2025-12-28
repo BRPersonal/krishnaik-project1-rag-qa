@@ -169,7 +169,7 @@ class VectorStoreService:
 
     def delete_collection(self) -> None:
         """Delete the entire collection."""
-        logger.warning(f"Deleting collection: {self.collection_name}")
+        logger.info(f"Deleting collection: {self.collection_name}")
         self.client.delete_collection(self.collection_name)
         logger.info(f"Collection '{self.collection_name}' deleted")
 

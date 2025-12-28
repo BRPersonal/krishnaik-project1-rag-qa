@@ -86,6 +86,15 @@ async def root():
     with open("static/index.html", "r") as f:
         return f.read()
 
+@app.get("/config-check")
+async def config_check():
+    # For debugging (don't expose actual keys!)
+    return {
+        "has_openai_key": bool(settings.openai_api_key),
+        "has_qdrant_key": bool(settings.qdrant_api_key),
+        "qdrant_url": settings.qdrant_url,
+        "llm_model": settings.llm_model
+    }
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
